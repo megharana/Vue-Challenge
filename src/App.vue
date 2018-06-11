@@ -1,20 +1,20 @@
 <template>
   <div>
-    <add-frame>
+    <prov-list>
 
-    </add-frame>
+    </prov-list>
 
   </div>
 </template>
   <script>
-import addFrame from './components/addFrame.vue';
+import providersList from './components/addFrame.vue';
 
 
 
 export default {
   components:{
 
-    'add-frame':addFrame
+    'prov-list':providersList
   },
   data () {
     return {

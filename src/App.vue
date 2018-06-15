@@ -1,20 +1,18 @@
 <template>
   <div>
-    <prov-list>
-
-    </prov-list>
-
+    <add-header></add-header>
+    <divisions></divisions>
   </div>
 </template>
   <script>
-import providersList from './components/addFrame.vue';
-
+import header from './components/header.vue';
+import divisions from './components/divisions.vue';
 
 
 export default {
   components:{
-
-    'prov-list':providersList
+    'add-header':header,
+    'divisions':divisions
   },
   data () {
     return {

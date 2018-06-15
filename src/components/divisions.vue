@@ -1,12 +1,13 @@
 <template>
-  <div>
-    <div>
+  <div class=mainDiv>
+    
+    <div class ="divi" style="overflow:scroll;">
       <ul>
-          <li v-for="provider in providers" v-model="name" ><button type="text" href="" class="btn">{{provider.name}}<span class="price">₹{{provider.lowestprice}}</span></button></li>
+          <li v-for="provider in providers" v-model="name" ><button type="text" href="" class="btn"><img src="/image/wifi_318-1573.jpg"/>{{provider.name}}<span class="price">₹{{provider.lowestprice}}<img src="/image/images.jpg"/></span></button></li>
       </ul>
     </div>
 
-    <div>
+    <div class ="divi">
       <ul>
           <li v-for="provider in providers" v-model="name" ><button type="text" href="" class="btn">{{provider.name}}<span class="price">₹{{provider.lowestprice}}</span></button></li>
       </ul>
@@ -58,5 +59,20 @@ export default {
 .price{
   float:right;
   text-align:right;
+}
+.divi{
+  border: 1px solid black;
+}
+.mainDiv{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+ul {
+  list-style-type: none;
+}
+img{
+  width: 70px;
+  height: 70px;
+
 }
 </style>

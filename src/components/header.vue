@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="divi">
     <a href=""><img class="logo"src="/image/download.png"/></a>
     <p class="heading">ISP HackerEarth</p>
     <p style="color:#4DB388;font-size:25px;margin-top:50px;float:left;">&nbsp &nbsp&nbsp &nbsp-searching ISP made easy</p>
@@ -57,8 +57,15 @@ export default {
     border-radius: 10px;
     text-align:center;
     width:auto;
+    float:left;
 
 }
 
+.divi{
+  padding-bottom: 5px;
+  width:100%;
+  overflow: hidden;
 
+
+}
 </style>

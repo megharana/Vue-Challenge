@@ -1,37 +1,39 @@
 <template>
-  <div class=mainDiv>
-
-    <div class ="divi" style="overflow:scroll;">
-      <ul>
-          <li v-for="provider in providers" v-model="name" ><button type="text" href="" class="btn"><img src="/image/wifi_318-1573.jpg"/>{{provider.name}}<span class="price">₹{{provider.lowestprice}}<img src="/image/images.jpg"/></span></button></li>
-      </ul>
-    </div>
-
-    <div class ="divi">
+    <div>
       <div class="detailPanel" >
         <div style="background-color:grey;border-radius:10px;padding:5px 5px 5px 5px;text-align:center"  >
-          Megha
+          {{provider.name}}
         </div>
-        <p>is ndnajkkja</p>
-        <p>is ndnajkkja</p>
-        <p>is ndnajkkja</p>
+        <p>{{provider.maxspeed}}</p>
+        <p>{{provider.contact}}</p>
+        <p>{{provider.url}}</p>
+        <p>{{provider.lowestprice}}</p>
       </div>
 
-  </div>
-
-  </div>
+    </div>
 </template>
 <script>
+import {bus} from '../main';
 export default {
   data () {
     return {
-      name:"",
-      providers:[{name:'Airtel', lowestprice:'600',rating:'5',maxspeed:'1000mbps',desc:'baat krne se hi baat bnti hai',contact:9086784563,url:'https://www.airtel.in/'},{name:'Reliance DSL', lowestprice:'600',rating:'5',maxspeed:'1000mbps',desc:'baat krne se hi baat bnti hai',contact:9086784563,url:'https://www.airtel.in/'},{name:'Hathway', lowestprice:'600',rating:'5',maxspeed:'1000mbps',desc:'baat krne se hi baat bnti hai',contact:9086784563,url:'https://www.airtel.in/'},{name:'Tikona', lowestprice:'600',rating:'5',maxspeed:'1024mbps',desc:'Suar network',contact:9086675463,url:'https://www.tikona.in/'}]
+      provider:{}
     }
   },
   methods:{
-    }
+  },
+  created(){
+    bus.$on('showDetail', (data) => {
+      this.provider.name=data.name;
+      this.provider.lowestprice=data.lowestprice;
+      this.provider.rating=data.rating;
+      this.provider.maxspeed=data.maxspeed;
+      this.provider.contact=data.contact;
+      this.provider.desc=data.desc;
+      this.provider.url=data.url;
+    })
   }
+}
 </script>
 
 <style >

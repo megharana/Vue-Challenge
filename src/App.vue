@@ -1,18 +1,26 @@
 <template>
   <div>
     <add-header></add-header>
-    <divisions></divisions>
+    <div class="mainDiv">
+      <div class="divi">
+        <add-list></add-list>
+      </div>
+      <div class="divi">
+        <add-details></add-details>
+      </div>
+    </div>
   </div>
 </template>
   <script>
 import header from './components/header.vue';
-import divisions from './components/divisions.vue';
-
+import ISPList from './components/ISPList.vue';
+import ISPdetails from './components/ISPdetails.vue';
 
 export default {
   components:{
     'add-header':header,
-    'divisions':divisions
+    'add-list':ISPList,
+    'add-details':ISPdetails
   },
   data () {
     return {
@@ -31,5 +39,11 @@ body{
   margin: 0;
   font-family: 'Nunito SemiBold';
 }
-
+.divi{
+  border: 1px solid black;
+}
+.mainDiv{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
 </style>

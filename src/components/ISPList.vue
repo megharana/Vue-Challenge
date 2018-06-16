@@ -1,37 +1,38 @@
 <template>
-  <div class=mainDiv>
-
-    <div class ="divi" style="overflow:scroll;">
+    <div style="overflow:scroll;">
       <ul>
-          <li v-for="provider in providers" v-model="name" ><button type="text" href="" class="btn"><img src="/image/wifi_318-1573.jpg"/>{{provider.name}}<span class="price">₹{{provider.lowestprice}}<img src="/image/images.jpg"/></span></button></li>
+          <li v-for="provider in providers">
+            <button type="text" class="btn" v-on:click="showDetails(provider)">
+              <img src="/image/wifi_318-1573.jpg"/>
+                {{provider.name}}
+                <span class="price">
+                  ₹{{provider.lowestprice}}
+                    <img src="/image/images.jpg"/>
+                </span>
+            </button>
+          </li>
       </ul>
     </div>
-
-    <div class ="divi">
-      <div class="detailPanel" >
-        <div style="background-color:grey;border-radius:10px;padding:5px 5px 5px 5px;text-align:center"  >
-          Megha
-        </div>
-        <p>is ndnajkkja</p>
-        <p>is ndnajkkja</p>
-        <p>is ndnajkkja</p>
-      </div>
-
-  </div>
-
-  </div>
 </template>
 <script>
+import {bus} from '../main';
 export default {
-  data () {
+  data (){
     return {
-      name:"",
-      providers:[{name:'Airtel', lowestprice:'600',rating:'5',maxspeed:'1000mbps',desc:'baat krne se hi baat bnti hai',contact:9086784563,url:'https://www.airtel.in/'},{name:'Reliance DSL', lowestprice:'600',rating:'5',maxspeed:'1000mbps',desc:'baat krne se hi baat bnti hai',contact:9086784563,url:'https://www.airtel.in/'},{name:'Hathway', lowestprice:'600',rating:'5',maxspeed:'1000mbps',desc:'baat krne se hi baat bnti hai',contact:9086784563,url:'https://www.airtel.in/'},{name:'Tikona', lowestprice:'600',rating:'5',maxspeed:'1024mbps',desc:'Suar network',contact:9086675463,url:'https://www.tikona.in/'}]
+
+      providers:[{name:'Airtel', lowestprice:'600',rating:'5',maxspeed:'1000mbps',desc:'baat krne se hi baat bnti hai',contact:9086784563,url:'https://www.airtel.in/'},
+      {name:'Reliance DSL', lowestprice:'600',rating:'5',maxspeed:'1000mbps',desc:'baat krne se hi baat bnti hai',contact:9086784563,url:'https://www.airtel.in/'},
+      {name:'Hathway', lowestprice:'600',rating:'5',maxspeed:'1000mbps',desc:'baat krne se hi baat bnti hai',contact:9086784563,url:'https://www.airtel.in/'},
+      {name:'Tikona', lowestprice:'600',rating:'5',maxspeed:'1024mbps',desc:'Suar network',contact:9086675463,url:'https://www.tikona.in/'}]
     }
   },
   methods:{
+    showDetails:function(provider){
+      bus.$emit('showDetail', provider);
+
     }
   }
+}
 </script>
 
 <style >

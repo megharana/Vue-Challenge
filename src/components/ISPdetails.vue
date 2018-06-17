@@ -1,15 +1,22 @@
 <template>
-    <div>
+    <div class="mainDiv">
+      <div>
+        <img style="height:30%;width:40%;padding:70px 80px 70px 70px;" src="/image/shapes.png"/>
+      </div>
       <div class="detailPanel" >
-        <div style="background-color:grey;border-radius:10px;padding:5px 5px 5px 5px;text-align:center"  >
-          {{provider.name}}
-        </div>
-        <p>{{provider.maxspeed}}</p>
-        <p>{{provider.contact}}</p>
-        <p>{{provider.url}}</p>
-        <p>{{provider.lowestprice}}</p>
+        <div style="background-color:grey;border-radius:10px;padding:10px 10px 20px 10px;text-align:center"  >
+          <h3>{{provider.name}}</h3>
+        </div style="line-height:0.1;">
+        <p><img class="logos" src="/image/wifi.png"/>{{provider.maxspeed}}</p>
+        <p><img class="logos" src="/image/contact.jpg"/>{{provider.contact}}</p>
+        <p><img class="logos" src="/image/email.png"/>{{provider.url}}</p>
+        <p><img class="logos" src="/image/money.png"/>{{provider.lowestprice}}</p>
       </div>
 
+
+      <div class="rating">
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+      </div>
     </div>
 </template>
 <script>
@@ -17,21 +24,32 @@ import {bus} from '../main';
 export default {
   data () {
     return {
-      provider:{}
+      provider: {
+        name:"",
+        lowestprice:"",
+        rating:"",
+        maxspeed:"",
+        contact:"",
+        desc:"",
+        url:""
+      }
     }
   },
   methods:{
   },
   created(){
-    bus.$on('showDetail', (data) => {
+    bus.$on('showDetails', (data) => {
       this.provider.name=data.name;
+
       this.provider.lowestprice=data.lowestprice;
       this.provider.rating=data.rating;
       this.provider.maxspeed=data.maxspeed;
       this.provider.contact=data.contact;
       this.provider.desc=data.desc;
       this.provider.url=data.url;
-    })
+
+
+    });
   }
 }
 </script>
@@ -73,29 +91,60 @@ export default {
 }
 .mainDiv{
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 45% 55%;
+
 }
-ul {
-  list-style-type: none;
-}
-img{
-  width: 70px;
-  height: 70px;
-}
+
 .detailPanel{
-  float:right;
+  margin-bottom:50px;
   border:1px solid black;
   border-radius: 10px;
   margin-top:45px;
   margin-left:200px;
   margin-right:20px;
-  font-size: 30px;
+
+
+  font-size: 20px;
+
 }
+
 p{
 
   padding-left:25px;
   padding-right:25px;
   padding-bottom:5px;
   padding-top:5px;
+
+}
+.logos{
+  height:40px;
+  width:40px;
+}
+.rating > span:hover:before {
+   content: "\2605";
+   position: absolute;
+}
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
 }
 </style>
